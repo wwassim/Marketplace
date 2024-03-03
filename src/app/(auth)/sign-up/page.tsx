@@ -21,13 +21,14 @@ const page = () => {
     resolver: zodResolver(AuthCredentialsValidator),
   })
 
-  const {data} = trpc.anyApiRoute.useQuery()
+  const {mutate , isLoading} = trpc.auth.createPayloadUser.useMutation({})
 
   const onSubmit = ({
     email,
     password,
   }: TAuthCredentialsValidator) => {
     // Todo backend validation
+    mutate({email, password})
   }
   return (
     <>
