@@ -11,10 +11,7 @@ interface VerifyEmailProps {
 }
 
 const VerifyEmail = ({ token }: VerifyEmailProps) => {
-  const { data, isLoading, isError } =
-    trpc.auth.verifyEmail.useQuery({
-      token,
-    })
+  const { data, isLoading, isError } =trpc.auth.verifyEmail.useQuery({token})
 
   if (isError) {
     return (
@@ -31,7 +28,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     )
   }
 
-  if (data?.success) {
+  if (data?.succes) {
     return (
       <div className='flex h-full flex-col items-center justify-center'>
         <div className='relative mb-4 h-60 w-60 text-muted-foreground'>
